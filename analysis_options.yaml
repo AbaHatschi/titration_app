@@ -15,6 +15,7 @@ analyzer:
     - "dev/conductor/lib/proto/*"
     - "engine/**"
     - "**.g.dart"
+    - "**.freezed.dart"
 
 formatter:
   page_width: 80
