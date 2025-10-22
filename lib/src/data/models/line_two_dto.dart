@@ -4,7 +4,7 @@ part 'line_two_dto.freezed.dart';
 part 'line_two_dto.g.dart';
 
 @freezed
-abstract class LineTwoDto with _$LineTwoDto {
+ abstract class LineTwoDto with _$LineTwoDto {
   factory LineTwoDto({
     required int id,
     required double pLye1,
