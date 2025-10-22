@@ -3,7 +3,7 @@ import '../models/keg_line_dto.dart';
 
 class KegLineMapper {
   /// Converts a KegLineDto to a KegLineEntity
-  KegLineEntity toEntity(KegLineDto dto) {
+  static KegLineEntity toEntity(KegLineDto dto) {
     return KegLineEntity(
       id: dto.id,
       pLye1: dto.pLye1,
@@ -21,7 +21,7 @@ class KegLineMapper {
   }
 
   /// Converts a KegLineEntity to a KegLineDto
-  KegLineDto toDto(KegLineEntity entity) {
+  static KegLineDto toDto(KegLineEntity entity) {
     return KegLineDto(
       id: entity.id,
       pLye1: entity.pLye1,

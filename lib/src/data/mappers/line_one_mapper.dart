@@ -3,7 +3,7 @@ import '../models/line_one_dto.dart';
 
 class LineOneMapper {
   /// Converts a LineOneDto to a LineOneEntity
-  LineOneEntity toEntity(LineOneDto dto) {
+  static LineOneEntity toEntity(LineOneDto dto) {
     return LineOneEntity(
       id: dto.id,
       pLye1: dto.pLye1,
@@ -19,7 +19,7 @@ class LineOneMapper {
   }
 
   /// Converts a LineOneEntity to a LineOneDto
-  LineOneDto toDto(LineOneEntity entity) {
+  static LineOneDto toDto(LineOneEntity entity) {
     return LineOneDto(
       id: entity.id,
       pLye1: entity.pLye1,
