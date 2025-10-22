@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../routing/app_router.dart';
 import '../view_model/dashboard_view_model.dart';
 
 class DashboardView extends StatelessWidget {
@@ -8,29 +9,45 @@ class DashboardView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final DashboardViewModel homeViewModel = context
-        .watch<DashboardViewModel>();
-
-    return Scaffold(
-      appBar: AppBar(title: Text(homeViewModel.title)),
-      body: ListenableBuilder(
-        listenable: homeViewModel,
-        builder: (BuildContext context, _) {
-          return Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(homeViewModel.message),
-                const SizedBox(height: 16),
-                ElevatedButton(
-                  onPressed: () => homeViewModel.navigateToSplash(context),
-                  child: const Text('Go to Splash Screen'),
-                ),
-              ],
-            ),
-          );
-        },
-      ),
+    return Consumer<DashboardViewModel>(
+      builder:
+          (
+            BuildContext context,
+            DashboardViewModel dashboardViewModel,
+            Widget? child,
+          ) {
+            return ValueListenableBuilder<bool>(
+              valueListenable: dashboardViewModel.navigateToSplash,
+              builder:
+                  (BuildContext context, bool shouldNavigate, Widget? child) {
+                    if (shouldNavigate) {
+                      WidgetsBinding.instance.addPostFrameCallback((_) {
+                        SplashRoute().go(context);
+                        dashboardViewModel.navigateToSplash.value =
+                            false;
+                      });
+                    }
+                    return Scaffold(
+                      appBar: AppBar(title: Text(dashboardViewModel.title)),
+                      body: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text(dashboardViewModel.message),
+                            const SizedBox(height: 16),
+                            ElevatedButton(
+                              onPressed: () {
+                                dashboardViewModel.onSplashButtonPressed();
+                              },
+                              child: const Text('Go to Splash'),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+            );
+          },
     );
   }
 }

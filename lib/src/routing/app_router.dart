@@ -17,6 +17,7 @@ class AppRouter {
 
 @TypedGoRoute<SplashRoute>(path: RoutePath.splash)
 class SplashRoute extends GoRouteData with $SplashRoute {
+
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return const SplashView();
@@ -25,6 +26,7 @@ class SplashRoute extends GoRouteData with $SplashRoute {
 
 @TypedGoRoute<DashboardRoute>(path: RoutePath.dashboard)
 class DashboardRoute extends GoRouteData with $DashboardRoute {
+
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return const DashboardView();
