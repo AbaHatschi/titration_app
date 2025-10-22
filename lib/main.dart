@@ -10,6 +10,9 @@ import 'src/data/services/shared_preferences_service.dart';
 import 'src/routing/app_router.dart';
 import 'src/titration_app.dart';
 import 'src/ui/features/dashboard/view_model/dashboard_view_model.dart';
+import 'src/ui/features/keg_line/view_model/keg_line_view_model.dart';
+import 'src/ui/features/line_one/view_model/line_one_view_model.dart';
+import 'src/ui/features/line_two/view_model/line_two_view_model.dart';
 import 'src/ui/features/splash/view_model/splash_view_model.dart';
 
 Future<void> main() async {
@@ -45,11 +48,35 @@ Future<void> main() async {
         ),
 
         // Add your view model providers here
+        ChangeNotifierProvider<SplashViewModel>(
+          create: (BuildContext context) => SplashViewModel(),
+        ),
         ChangeNotifierProvider<DashboardViewModel>(
           create: (BuildContext context) => DashboardViewModel(),
         ),
-        ChangeNotifierProvider<SplashViewModel>(
-          create: (BuildContext context) => SplashViewModel(),
+        ChangeNotifierProvider<KegLineViewModel>(
+          create: (BuildContext context) => KegLineViewModel(
+            kegLineRepository: Provider.of<KegLineRepository>(
+              context,
+              listen: false,
+            ),
+          ),
+        ),
+        ChangeNotifierProvider<LineOneViewModel>(
+          create: (BuildContext context) => LineOneViewModel(
+            lineOneRepository: Provider.of<LineOneRepository>(
+              context,
+              listen: false,
+            ),
+          ),
+        ),
+        ChangeNotifierProvider<LineTwoViewModel>(
+          create: (BuildContext context) => LineTwoViewModel(
+            lineTwoRepository: Provider.of<LineTwoRepository>(
+              context,
+              listen: false,
+            ),
+          ),
         ),
       ],
       child: const TitrationApp(),
