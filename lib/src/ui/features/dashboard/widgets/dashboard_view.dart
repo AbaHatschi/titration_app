@@ -29,6 +29,8 @@ class DashboardView extends StatelessWidget {
                         LineOneRoute().go(context);
                       case RoutePath.lineTwo:
                         LineTwoRoute().go(context);
+                      case RoutePath.splash:
+                        SplashRoute().go(context);
                     }
                     dashboardViewModel.navigateTo.value = null;
                   });
@@ -50,16 +52,23 @@ class DashboardView extends StatelessWidget {
                         const SizedBox(height: 16),
                         ElevatedButton(
                           onPressed: () {
-                            // Additional button action can be added here
+                            dashboardViewModel.onLineOneButtonPressed();
                           },
                           child: const Text('Go to Line One'),
                         ),
                         const SizedBox(height: 16),
                         ElevatedButton(
                           onPressed: () {
-                            // Additional button action can be added here
+                            dashboardViewModel.onLineTwoButtonPressed();
                           },
                           child: const Text('Go to Line Two'),
+                        ),
+                        const SizedBox(height: 72),
+                        ElevatedButton(
+                          onPressed: () {
+                            dashboardViewModel.onSplashButtonPressed();
+                          },
+                          child: const Text('Back to Splash'),
                         ),
                       ],
                     ),

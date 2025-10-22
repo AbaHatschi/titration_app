@@ -19,4 +19,8 @@ class DashboardViewModel extends ChangeNotifier {
   void onLineTwoButtonPressed() {
     navigateTo.value = RoutePath.lineTwo;
   }
+
+  void onSplashButtonPressed() {
+    navigateTo.value = RoutePath.splash;
+  }
 }
