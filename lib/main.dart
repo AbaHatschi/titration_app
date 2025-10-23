@@ -11,8 +11,8 @@ import 'src/data/services/shared_preferences_service.dart';
 import 'src/domain/keg_line_entity.dart';
 import 'src/domain/line_one_entity.dart';
 import 'src/domain/line_two_entity.dart';
+import 'src/main_app.dart';
 import 'src/routing/app_router.dart';
-import 'src/titration_app.dart';
 import 'src/ui/features/dashboard/view_model/dashboard_view_model.dart';
 import 'src/ui/features/keg_line/view_model/keg_line_view_model.dart';
 import 'src/ui/features/line_one/view_model/line_one_view_model.dart';
@@ -20,6 +20,10 @@ import 'src/ui/features/line_two/view_model/line_two_view_model.dart';
 import 'src/ui/features/splash/view_model/splash_view_model.dart';
 
 Future<void> main() async {
+  await startApp();
+}
+
+Future<void> startApp() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Initialize services for dependency injection
@@ -74,7 +78,7 @@ Future<void> main() async {
           ),
         ),
       ],
-      child: const TitrationApp(),
+      child: const MainApp(),
     ),
   );
 }

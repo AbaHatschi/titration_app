@@ -3,8 +3,8 @@ import 'package:provider/provider.dart';
 
 import 'routing/app_router.dart';
 
-class TitrationApp extends StatelessWidget {
-  const TitrationApp({super.key});
+class MainApp extends StatelessWidget {
+  const MainApp({super.key});
 
   @override
   Widget build(BuildContext context) {
