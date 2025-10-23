@@ -1,7 +1,9 @@
 name: titration_app
-description: "A new Flutter project."
+description: >
+  A professional Flutter application for titration calculations and management.
+  Features Clean Architecture, MVVM pattern, and comprehensive error handling.
+version: 0.1.0+1
 publish_to: 'none'
-version: 0.1.0
 
 environment:
   sdk: ^3.9.2
@@ -28,3 +30,10 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/images/
+
+repository: https://github.com/AbaHatschi/titration_app
+issue_tracker: https://github.com/AbaHatschi/titration_app/issues
+homepage: https://github.com/AbaHatschi/titration_app

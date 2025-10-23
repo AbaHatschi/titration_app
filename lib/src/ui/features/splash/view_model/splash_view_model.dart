@@ -9,4 +9,10 @@ class SplashViewModel extends ChangeNotifier {
   void onDashboardButtonPressed() {
     navigateToDashboard.value = true;
   }
+
+  @override
+  void dispose() {
+    navigateToDashboard.dispose();
+    super.dispose();
+  }
 }

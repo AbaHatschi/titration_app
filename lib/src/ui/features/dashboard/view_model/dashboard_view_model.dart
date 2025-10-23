@@ -23,4 +23,10 @@ class DashboardViewModel extends ChangeNotifier {
   void onSplashButtonPressed() {
     navigateTo.value = RoutePath.splash;
   }
+
+  @override
+  void dispose() {
+    navigateTo.dispose();
+    super.dispose();
+  }
 }

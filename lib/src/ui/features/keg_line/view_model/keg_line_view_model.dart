@@ -8,23 +8,24 @@ import '../../../../utils/result.dart';
 class KegLineViewModel extends ChangeNotifier {
   KegLineViewModel({required IRepository<KegLineEntity> repository})
     : _repository = repository {
-    // Initialize the command with the action
     _loadKegLinesCommand = Command0<List<KegLineEntity>>(_loadKegLines);
-    // Execute immediately to load data on init
     _loadKegLinesCommand.execute();
   }
 
   final IRepository<KegLineEntity> _repository;
 
   late final Command0<List<KegLineEntity>> _loadKegLinesCommand;
-
-  // Expose the command to the view
   Command0<List<KegLineEntity>> get loadKegLinesCommand => _loadKegLinesCommand;
 
   final String title = 'Keg Line';
   String get message => 'Welcome to the Keg Line!';
 
-  List<KegLineEntity> kegLines = <KegLineEntity>[];
+  List<KegLineEntity> _kegLines = <KegLineEntity>[];
+  List<KegLineEntity> get kegLines => _kegLines;
+
+  String? _errorMessage;
+  String? get errorMessage => _errorMessage;
+
   final ValueNotifier<bool> navigateToDashboard = ValueNotifier<bool>(false);
 
   void onDashboardButtonPressed() {
@@ -35,12 +36,21 @@ class KegLineViewModel extends ChangeNotifier {
   Future<Result<List<KegLineEntity>>> _loadKegLines() async {
     final Result<List<KegLineEntity>> result = await _repository.getAll();
 
-    // Update the ViewModel state based on result
     return switch (result) {
-      Ok<List<KegLineEntity>>(value: final List<KegLineEntity> kegLineList) =>
-        Result<List<KegLineEntity>>.ok(kegLines = kegLineList),
+      Ok<List<KegLineEntity>>(value: final List<KegLineEntity> listItems) =>
+        Result<List<KegLineEntity>>.ok(() {
+          _kegLines = listItems;
+          _errorMessage = null;
+          notifyListeners();
+          return listItems;
+        }()),
       Error<List<KegLineEntity>>(error: final Exception error) =>
-        Result<List<KegLineEntity>>.error(error),
+        Result<List<KegLineEntity>>.error(() {
+          _kegLines = <KegLineEntity>[];
+          _errorMessage = error.toString();
+          notifyListeners();
+          return error;
+        }()),
     };
   }
 

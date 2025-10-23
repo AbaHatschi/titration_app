@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'sizes.dart';
 
 // A collection of constant SizedBox widgets for consistent spacing in the UI.
+
 // Horizontal gaps
 const SizedBox gapW4 = SizedBox(width: Sizes.p4);
 const SizedBox gapW8 = SizedBox(width: Sizes.p8);

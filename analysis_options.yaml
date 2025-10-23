@@ -8,8 +8,9 @@ analyzer:
     strict-inference: true
     strict-raw-types: true
   errors:
-    deprecated_member_use: ignore
-    deprecated_member_use_from_same_package: ignore
+    # These rules should definitely remain active
+    # deprecated_member_use: ignore
+    # deprecated_member_use_from_same_package: ignore
   exclude:
     - "bin/cache/**"
     - "dev/conductor/lib/proto/*"
