@@ -1,14 +1,14 @@
 import 'package:flutter/foundation.dart';
 
-import '../../../../data/repositories/keg_line_repository.dart';
+import '../../../../data/repositories/i_repository.dart';
 import '../../../../domain/keg_line_entity.dart';
 import '../../../../utils/result.dart';
 
 class KegLineViewModel extends ChangeNotifier {
-  KegLineViewModel({required KegLineRepository kegLineRepository})
-    : _kegLineRepository = kegLineRepository;
+  KegLineViewModel({required IRepository<KegLineEntity> repository})
+    : _repository = repository;
 
-  final KegLineRepository _kegLineRepository;
+  final IRepository<KegLineEntity> _repository;
 
   final String title = 'Keg Line';
   String get message => 'Welcome to the Keg Line!';
@@ -21,8 +21,7 @@ class KegLineViewModel extends ChangeNotifier {
   }
 
   Future<void> loadKegLines() async {
-    final Result<List<KegLineEntity>> result = await _kegLineRepository
-        .getAll();
+    final Result<List<KegLineEntity>> result = await _repository.getAll();
     if (result is Ok<List<KegLineEntity>>) {
       kegLines = result.value;
     } else {

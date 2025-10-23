@@ -1,14 +1,14 @@
 import 'package:flutter/foundation.dart';
 
-import '../../../../data/repositories/line_two_repository.dart';
+import '../../../../data/repositories/i_repository.dart';
 import '../../../../domain/line_two_entity.dart';
 import '../../../../utils/result.dart';
 
 class LineTwoViewModel extends ChangeNotifier {
-  LineTwoViewModel({required LineTwoRepository lineTwoRepository})
-    : _lineTwoRepository = lineTwoRepository;
+  LineTwoViewModel({required IRepository<LineTwoEntity> repository})
+    : _repository = repository;
 
-  final LineTwoRepository _lineTwoRepository;
+  final IRepository<LineTwoEntity> _repository;
 
   final String title = 'Line Two';
   String get message => 'Welcome to Line Two!';
@@ -21,8 +21,7 @@ class LineTwoViewModel extends ChangeNotifier {
   }
 
   Future<void> loadLineTwos() async {
-    final Result<List<LineTwoEntity>> result = await _lineTwoRepository
-        .getAll();
+    final Result<List<LineTwoEntity>> result = await _repository.getAll();
     if (result is Ok<List<LineTwoEntity>>) {
       lineTwos = result.value;
     } else {

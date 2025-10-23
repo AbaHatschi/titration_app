@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 
+import 'src/data/repositories/i_repository.dart';
 import 'src/data/repositories/keg_line_repository.dart';
 import 'src/data/repositories/line_one_repository.dart';
 import 'src/data/repositories/line_two_repository.dart';
 import 'src/data/services/sembast_service.dart';
 import 'src/data/services/shared_preferences_service.dart';
+import 'src/domain/keg_line_entity.dart';
+import 'src/domain/line_one_entity.dart';
+import 'src/domain/line_two_entity.dart';
 import 'src/routing/app_router.dart';
 import 'src/titration_app.dart';
 import 'src/ui/features/dashboard/view_model/dashboard_view_model.dart';
@@ -37,13 +41,13 @@ Future<void> main() async {
         ),
 
         // Add your repository providers here
-        Provider<KegLineRepository>(
+        Provider<IRepository<KegLineEntity>>(
           create: (_) => KegLineRepository(sembastService: sembastService),
         ),
-        Provider<LineOneRepository>(
+        Provider<IRepository<LineOneEntity>>(
           create: (_) => LineOneRepository(sembastService: sembastService),
         ),
-        Provider<LineTwoRepository>(
+        Provider<IRepository<LineTwoEntity>>(
           create: (_) => LineTwoRepository(sembastService: sembastService),
         ),
 
@@ -56,26 +60,17 @@ Future<void> main() async {
         ),
         ChangeNotifierProvider<KegLineViewModel>(
           create: (BuildContext context) => KegLineViewModel(
-            kegLineRepository: Provider.of<KegLineRepository>(
-              context,
-              listen: false,
-            ),
+            repository: context.read<IRepository<KegLineEntity>>(),
           ),
         ),
         ChangeNotifierProvider<LineOneViewModel>(
           create: (BuildContext context) => LineOneViewModel(
-            lineOneRepository: Provider.of<LineOneRepository>(
-              context,
-              listen: false,
-            ),
+            repository: context.read<IRepository<LineOneEntity>>(),
           ),
         ),
         ChangeNotifierProvider<LineTwoViewModel>(
           create: (BuildContext context) => LineTwoViewModel(
-            lineTwoRepository: Provider.of<LineTwoRepository>(
-              context,
-              listen: false,
-            ),
+            repository: context.read<IRepository<LineTwoEntity>>(),
           ),
         ),
       ],
