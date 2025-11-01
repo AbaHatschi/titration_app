@@ -1,0 +1,30 @@
+name: data
+description: "A new Flutter package project."
+version: 0.0.1
+publish_to: 'none'
+resolution: workspace
+
+environment:
+  sdk: ^3.9.2
+  flutter: ">=1.17.0"
+
+dependencies:
+  core:
+    path: ../core
+  database:
+    path: ../database
+  keg_line:
+    path: ../keg_line
+  line_one:
+    path: ../line_one
+  line_two:
+    path: ../line_two
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+    
+flutter:
+  uses-material-design: true

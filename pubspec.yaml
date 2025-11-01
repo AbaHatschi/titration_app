@@ -1,0 +1,103 @@
+name: titration_repository
+description: "MonoRepo for calculating concentrations and soda in a titration."
+publish_to: 'none'
+version: 0.1.0
+
+workspace:
+  - apps/titration_app
+  - packages/core
+  - packages/dashboard
+  - packages/data
+  - packages/database
+  - packages/keg_line
+  - packages/line_one
+  - packages/line_two
+  - packages/routing
+  - packages/splash
+
+environment:
+  sdk: ^3.9.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  melos: ^7.3.0
+
+melos:
+  scripts:
+    # === Dependencies & Setup ===
+    get:
+      name: Get Dependencies
+      description: "Run flutter pub get in all packages."
+      exec: flutter pub get
+    
+    clean:
+      name: Clean Packages
+      description: "Run flutter clean in all packages."
+      exec: flutter clean
+    
+    # === Code Generation ===
+    build:
+      name: Build Generated Files
+      description: "Build all generated files."
+      run: dart run build_runner build --delete-conflicting-outputs
+      exec:
+        concurrency: 4
+      packageFilters:
+        dependsOn: build_runner
+    
+    watch:
+      name: Watch Generated Files
+      description: "Watch and rebuild generated files on changes."
+      run: dart run build_runner watch --delete-conflicting-outputs
+      exec:
+        concurrency: 4
+      packageFilters:
+        dependsOn: build_runner
+    
+    # === Code Quality ===
+    analyze:
+      name: Analyze Code
+      description: "Run dart analyzer in all packages."
+      exec: dart analyze
+      packageFilters:
+        dirExists: lib
+    
+    format:
+      name: Format Code
+      description: "Format all Dart files."
+      exec: dart format .
+    
+    format-check:
+      name: Check Formatting
+      description: "Check if all files are formatted correctly."
+      exec: dart format --set-exit-if-changed .
+    
+    # === Testing ===
+    test:
+      name: Run Tests
+      description: "Run all tests in packages with tests."
+      exec: flutter test
+      packageFilters:
+        dirExists: test
+    
+    test-coverage:
+      name: Run Tests with Coverage
+      description: "Run tests and generate coverage reports."
+      exec: flutter test --coverage
+      packageFilters:
+        dirExists: test
+    
+    # === Combined Workflows ===
+    check:
+      name: Full Check
+      description: "Run format check, analyze, and tests."
+      steps:
+        - melos run format-check
+        - melos run analyze
+        - melos run test

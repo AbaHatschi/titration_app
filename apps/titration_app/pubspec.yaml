@@ -1,0 +1,35 @@
+name: titration_app
+description: "Application for calculating concentrations and soda in a titration."
+publish_to: 'none'
+version: 0.1.0
+resolution: workspace
+
+environment:
+  sdk: ^3.9.2
+
+dependencies:
+  core:
+    path: ../../packages/core
+  data:
+    path: ../../packages/data
+  database:
+    path: ../../packages/database
+  keg_line:
+    path: ../../packages/keg_line
+  line_one:
+    path: ../../packages/line_one
+  line_two:
+    path: ../../packages/line_two
+  routing:
+    path: ../../packages/routing
+  flutter:
+    sdk: flutter
+  provider: ^6.1.5+1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true

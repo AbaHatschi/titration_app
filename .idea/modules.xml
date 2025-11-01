@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+<module fileurl="file://$PROJECT_DIR$/packages/core/melos_core.iml" filepath="$PROJECT_DIR$/packages/core/melos_core.iml"/>
+<module fileurl="file://$PROJECT_DIR$/packages/dashboard/melos_dashboard.iml" filepath="$PROJECT_DIR$/packages/dashboard/melos_dashboard.iml"/>
+<module fileurl="file://$PROJECT_DIR$/packages/data/melos_data.iml" filepath="$PROJECT_DIR$/packages/data/melos_data.iml"/>
+<module fileurl="file://$PROJECT_DIR$/packages/database/melos_database.iml" filepath="$PROJECT_DIR$/packages/database/melos_database.iml"/>
+<module fileurl="file://$PROJECT_DIR$/packages/keg_line/melos_keg_line.iml" filepath="$PROJECT_DIR$/packages/keg_line/melos_keg_line.iml"/>
+<module fileurl="file://$PROJECT_DIR$/packages/line_one/melos_line_one.iml" filepath="$PROJECT_DIR$/packages/line_one/melos_line_one.iml"/>
+<module fileurl="file://$PROJECT_DIR$/packages/line_two/melos_line_two.iml" filepath="$PROJECT_DIR$/packages/line_two/melos_line_two.iml"/>
+<module fileurl="file://$PROJECT_DIR$/packages/routing/melos_routing.iml" filepath="$PROJECT_DIR$/packages/routing/melos_routing.iml"/>
+<module fileurl="file://$PROJECT_DIR$/packages/splash/melos_splash.iml" filepath="$PROJECT_DIR$/packages/splash/melos_splash.iml"/>
+<module fileurl="file://$PROJECT_DIR$/apps/titration_app/melos_titration_app.iml" filepath="$PROJECT_DIR$/apps/titration_app/melos_titration_app.iml"/>
+<module fileurl="file://$PROJECT_DIR$/melos_titration_repository.iml" filepath="$PROJECT_DIR$/melos_titration_repository.iml"/>
+    </modules>
+  </component>
+</project>
