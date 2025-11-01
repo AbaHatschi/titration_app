@@ -9,6 +9,7 @@
     "line_two",
     "routing",
     "splash",
+    "styling",
     "titration_app",
     "titration_repository"
   ],
@@ -41,6 +42,7 @@
       ],
       "devDependencies": [
         "flutter_lints",
+        "flutter_native_splash",
         "flutter_test"
       ]
     },
@@ -155,6 +157,16 @@
       "dependencies": [
         "flutter",
         "provider"
+      ],
+      "devDependencies": [
+        "flutter_test"
+      ]
+    },
+    {
+      "name": "styling",
+      "version": "0.0.1",
+      "dependencies": [
+        "flutter"
       ],
       "devDependencies": [
         "flutter_test"
@@ -331,6 +343,23 @@
         "path_provider_linux",
         "path_provider_platform_interface",
         "path_provider_windows"
+      ]
+    },
+    {
+      "name": "flutter_native_splash",
+      "version": "2.4.7",
+      "dependencies": [
+        "ansicolor",
+        "args",
+        "flutter",
+        "flutter_web_plugins",
+        "html",
+        "image",
+        "meta",
+        "path",
+        "universal_io",
+        "xml",
+        "yaml"
       ]
     },
     {
@@ -947,6 +976,37 @@
       ]
     },
     {
+      "name": "ansicolor",
+      "version": "2.0.3",
+      "dependencies": []
+    },
+    {
+      "name": "universal_io",
+      "version": "2.2.2",
+      "dependencies": [
+        "collection",
+        "meta",
+        "typed_data"
+      ]
+    },
+    {
+      "name": "image",
+      "version": "4.5.4",
+      "dependencies": [
+        "archive",
+        "meta",
+        "xml"
+      ]
+    },
+    {
+      "name": "html",
+      "version": "0.15.6",
+      "dependencies": [
+        "csslib",
+        "source_span"
+      ]
+    },
+    {
       "name": "source_span",
       "version": "1.10.1",
       "dependencies": [
@@ -1081,9 +1141,34 @@
       ]
     },
     {
+      "name": "archive",
+      "version": "4.0.7",
+      "dependencies": [
+        "crypto",
+        "path",
+        "posix"
+      ]
+    },
+    {
+      "name": "csslib",
+      "version": "1.0.2",
+      "dependencies": [
+        "source_span"
+      ]
+    },
+    {
       "name": "vm_service",
       "version": "15.0.2",
       "dependencies": []
+    },
+    {
+      "name": "posix",
+      "version": "6.0.3",
+      "dependencies": [
+        "ffi",
+        "meta",
+        "path"
+      ]
     }
   ],
   "configVersion": 1

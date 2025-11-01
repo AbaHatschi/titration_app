@@ -14,6 +14,7 @@ workspace:
   - packages/line_two
   - packages/routing
   - packages/splash
+  - packages/styling
 
 environment:
   sdk: ^3.9.2

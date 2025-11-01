@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sci-Fi Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: '#00ffff', // Cyan
+                            'accent': '#ff00ff', // Magenta
+                        },
+                        "background-light": "#e0e7ff",
+                        "background-dark": "#0a0a1a",
+                        'danger': '#ff3b30', // Red for out of range high
+                        'warning': '#ff9500', // Orange for out of range low
+                    },
+                    fontFamily: {
+                        display: ["Orbitron", "sans-serif"],
+                    },
+                    boxShadow: {
+                        'glow-cyan': '0 0 15px rgba(0, 255, 255, 0.6)',
+                        'glow-magenta': '0 0 15px rgba(255, 0, 255, 0.6)',
+                        'glow-danger': '0 0 15px rgba(255, 59, 48, 0.6)',
+                        'glow-warning': '0 0 15px rgba(255, 149, 0, 0.6)',
+                    }
+                },
+            },
+        };
+    </script>
+<style>
+        .gauge-bg {
+            background: conic-gradient(from 135deg, #333, #111, #333);
+        }
+        .gauge-value {
+            transition: transform 0.5s ease-out;
+        }
+        .backlit {
+            position: relative;
+        }
+        .backlit::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: inherit;
+            z-index: -1;
+        }
+        .backlit-cyan::before {
+            background: linear-gradient(45deg, rgba(0, 255, 255, 0), rgba(0, 255, 255, 0.2), rgba(0, 255, 255, 0));
+            filter: blur(5px);
+        }
+        .backlit-magenta::before {
+            background: linear-gradient(45deg, rgba(255, 0, 255, 0), rgba(255, 0, 255, 0.2), rgba(255, 0, 255, 0));
+            filter: blur(5px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark font-sans antialiased">
+<div class="min-h-screen p-4 flex flex-col items-center justify-center bg-gradient-to-br from-[#0a0a1a] to-[#000011]">
+<div class="w-full max-w-sm mx-auto text-white">
+<header class="text-center mb-8">
+<h1 class="text-4xl font-display font-bold tracking-widest text-primary-DEFAULT uppercase" style="text-shadow: 0 0 10px theme('colors.primary.DEFAULT');">Dashboard</h1>
+</header>
+<main>
+<div class="grid grid-cols-2 gap-4 mb-8">
+<div class="relative backlit backlit-cyan">
+<input class="w-full bg-[#1a1a2e]/80 border-2 border-primary-DEFAULT/50 rounded-lg py-3 px-4 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-DEFAULT focus:border-transparent shadow-glow-cyan font-display" placeholder="Parameter A" type="text"/>
+</div>
+<div class="relative backlit backlit-magenta">
+<input class="w-full bg-[#1a1a2e]/80 border-2 border-primary-accent/50 rounded-lg py-3 px-4 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-accent focus:border-transparent shadow-glow-magenta font-display" placeholder="Parameter B" type="text"/>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-4 text-center">
+<div class="flex flex-col items-center space-y-2 backlit backlit-cyan">
+<div class="relative w-24 h-24">
+<svg class="w-full h-full" viewBox="0 0 120 120">
+<circle cx="60" cy="60" fill="none" r="54" stroke="#2c2c44" stroke-dasharray="254.469" stroke-dashoffset="63.617" stroke-width="8"></circle>
+<circle cx="60" cy="60" fill="none" r="54" stroke="rgba(0, 255, 255, 0.3)" stroke-dasharray="254.469" stroke-dashoffset="63.617" stroke-width="8" style="stroke-dasharray: 84.823, 169.646; transform: rotate(180deg); transform-origin: 50% 50%;"></circle>
+<circle class="gauge-value" cx="60" cy="60" fill="none" r="54" stroke="url(#grad1)" stroke-dasharray="254.469" stroke-dashoffset="149.6" stroke-width="8"></circle>
+<defs>
+<linearGradient id="grad1" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" style="stop-color:theme('colors.primary.accent');stop-opacity:1"></stop>
+<stop offset="100%" style="stop-color:theme('colors.primary.DEFAULT');stop-opacity:1"></stop>
+</linearGradient>
+</defs>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-2xl font-display font-bold text-white">4.82</span>
+<span class="text-xs text-gray-400 uppercase">Flux</span>
+</div>
+</div>
+<p class="text-sm text-gray-300">Phase Variance</p>
+</div>
+<div class="flex flex-col items-center space-y-2 backlit backlit-cyan">
+<div class="relative w-24 h-24">
+<svg class="w-full h-full" viewBox="0 0 120 120">
+<circle cx="60" cy="60" fill="none" r="54" stroke="#2c2c44" stroke-dasharray="254.469" stroke-dashoffset="63.617" stroke-width="8"></circle>
+<circle cx="60" cy="60" fill="none" r="54" stroke="rgba(0, 255, 255, 0.3)" stroke-dasharray="254.469" stroke-dashoffset="63.617" stroke-width="8" style="stroke-dasharray: 84.823, 169.646; transform: rotate(180deg); transform-origin: 50% 50%;"></circle>
+<circle class="gauge-value shadow-glow-warning" cx="60" cy="60" fill="none" r="54" stroke="theme('colors.warning')" stroke-dasharray="254.469" stroke-dashoffset="212" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-2xl font-display font-bold text-warning" style="text-shadow: 0 0 8px theme('colors.warning');">1.15</span>
+<span class="text-xs text-gray-400 uppercase">PSI</span>
+</div>
+</div>
+<p class="text-sm text-warning">Core Pressure</p>
+</div>
+<div class="flex flex-col items-center space-y-2 backlit backlit-cyan">
+<div class="relative w-24 h-24">
+<svg class="w-full h-full" viewBox="0 0 120 120">
+<circle cx="60" cy="60" fill="none" r="54" stroke="#2c2c44" stroke-dasharray="254.469" stroke-dashoffset="63.617" stroke-width="8"></circle>
+<circle cx="60" cy="60" fill="none" r="54" stroke="rgba(0, 255, 255, 0.3)" stroke-dasharray="254.469" stroke-dashoffset="63.617" stroke-width="8" style="stroke-dasharray: 84.823, 169.646; transform: rotate(180deg); transform-origin: 50% 50%;"></circle>
+<circle class="gauge-value shadow-glow-danger" cx="60" cy="60" fill="none" r="54" stroke="theme('colors.danger')" stroke-dasharray="254.469" stroke-dashoffset="63.617" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-2xl font-display font-bold text-danger" style="text-shadow: 0 0 8px theme('colors.danger');">98.7</span>
+<span class="text-xs text-gray-400 uppercase">%</span>
+</div>
+</div>
+<p class="text-sm text-danger">Energy Output</p>
+</div>
+</div>
+</main>
+</div>
+</div>
+
+</body></html>
